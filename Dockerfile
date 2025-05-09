@@ -1,13 +1,23 @@
-# Usar uma imagem oficial do OpenJDK (Java 17)
-FROM openjdk:17-jdk-alpine
+# Usar uma imagem do OpenJDK (Java 17)
+FROM maven:3.8.6-openjdk-17 AS build
 
 # Definir o diretório de trabalho
 WORKDIR /app
 
-# Copiar o arquivo JAR gerado pelo Maven para dentro do container
-COPY target/*.jar app.jar
+# Copiar o código fonte para dentro do container
+COPY . .
 
-# Definir a variável de ambiente para o Spring Boot usar a porta do Render
+# Compilar o projeto e gerar o JAR
+RUN ./mvnw clean package -DskipTests
+
+# Segunda etapa - Usar a imagem do OpenJDK para rodar o app
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+
+# Copiar o JAR gerado na etapa anterior
+COPY --from=build /app/target/*.jar app.jar
+
+# Definir a variável de ambiente para a porta (Render.com)
 ENV PORT=8080
 
 # Expor a porta 8080 para o Render
