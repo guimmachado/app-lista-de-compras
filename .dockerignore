@@ -1,0 +1,23 @@
+# Ignorar diretórios e arquivos desnecessários
+
+# Diretório do Maven
+.mvn/
+
+# Arquivos de cache
+*.log
+*.tmp
+
+# Diretórios de build
+/target/
+
+# Configurações locais
+/.idea
+/.vscode
+
+# Git
+/.git
+/.gitignore
+
+# Outros
+/node_modules
+.DS_Store
