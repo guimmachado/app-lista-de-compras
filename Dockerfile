@@ -1,5 +1,5 @@
 # Usar uma imagem do OpenJDK (Java 17)
-FROM maven:3.8.6-openjdk-17 AS build
+FROM maven:3.9.3-openjdk-17 AS build
 
 # Definir o diretório de trabalho
 WORKDIR /app
