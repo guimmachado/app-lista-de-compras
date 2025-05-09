@@ -8,5 +8,6 @@ public interface ItemService {
     Item criarItem(Item item);
     Item atualizarItem(Long id, Item item);
     void removerItem(Long id);
+    int size();
 }
 

@@ -46,4 +46,10 @@ public class ItemController {
     public void removerItem(@PathVariable Long id) {
         itemService.removerItem(id);
     }
+
+    // Novo endpoint para contar itens
+    @GetMapping("/count")
+    public int contarItens() {
+        return itemService.size();
+    }
 }

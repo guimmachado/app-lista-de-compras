@@ -52,5 +52,10 @@ public class ItemServiceImpl implements ItemService {
             }
         }
     }
+
+    @Override
+    public int size(){
+        return itens.size();
+    }
 }
 
