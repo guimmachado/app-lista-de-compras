@@ -1,16 +1,16 @@
-# Usar uma imagem do OpenJDK (Java 17)
-FROM maven:3.9.3-openjdk-17 AS build
+# Etapa de Build - Maven com OpenJDK 17
+FROM maven:3.9.3-eclipse-temurin-17 AS build
 
 # Definir o diretório de trabalho
 WORKDIR /app
 
-# Copiar o código fonte para dentro do container
+# Copiar o código fonte e o Maven Wrapper (se existir)
 COPY . .
 
-# Compilar o projeto e gerar o JAR
-RUN ./mvnw clean package -DskipTests
+# Garantir que o Maven baixe todas as dependências necessárias
+RUN mvn -B -f pom.xml clean package -DskipTests
 
-# Segunda etapa - Usar a imagem do OpenJDK para rodar o app
+# Segunda etapa - Usar uma imagem leve do OpenJDK para rodar o app
 FROM openjdk:17-jdk-alpine
 WORKDIR /app
 

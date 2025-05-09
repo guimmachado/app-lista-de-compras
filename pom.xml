@@ -47,8 +47,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+					<mainClass>com.lista_compras.ServerListaDeCompras.ServerListaDeComprasApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
