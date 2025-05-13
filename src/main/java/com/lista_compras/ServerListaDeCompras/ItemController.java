@@ -52,4 +52,9 @@ public class ItemController {
     public int contarItens() {
         return itemService.size();
     }
+
+    @GetMapping("/hello")
+    public String saudacao(){
+        return "Bem vindo ao app de Lista de compras!!";
+    }
 }
